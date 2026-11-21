@@ -1,0 +1,20 @@
+{
+ "accounts": {
+  "senaryokafa": {"connected_account_id": "ca_5V9PyIGRkoPU", "user_id": "senaryokafa"},
+  "whyitworks": {"connected_account_id": "ca_nYk3SdlTUvwc", "user_id": "alternatif-evren"}
+ },
+ "items": [
+  {"id": "wiw-karton", "account": "whyitworks", "at": "2026-11-22T05:00", "status": "pending",
+   "caption": "Why are car fronts built to crumple?",
+   "video_url": "https://static.metricool.com/planner/202611/7508559-file-3068326350089113467.mp4",
+   "cover_url": "https://static.metricool.com/planner/202611/7508559-file-4726095839535526114.jpg"},
+  {"id": "wiw-agloe", "account": "whyitworks", "at": "2026-11-23T02:00", "status": "pending",
+   "caption": "Why did a fake town end up on real maps?",
+   "video_url": "https://github.com/bborakurt/yatersiyse-medya/releases/download/medya/wiw-agloe.mp4",
+   "cover_url": "https://github.com/bborakurt/yatersiyse-medya/releases/download/medya/wiw-agloe-cover.jpg"},
+  {"id": "wiw-pole", "account": "whyitworks", "at": "2026-11-23T05:00", "status": "pending",
+   "caption": "Why do firefighters slide down poles?",
+   "video_url": "https://github.com/bborakurt/yatersiyse-medya/releases/download/medya/wiw-pole.mp4",
+   "cover_url": "https://github.com/bborakurt/yatersiyse-medya/releases/download/medya/wiw-pole-cover.jpg"}
+ ]
+}

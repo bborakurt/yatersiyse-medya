@@ -1,0 +1,27 @@
+name: yayin-sirasi
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: yayin
+  cancel-in-progress: false
+jobs:
+  yayin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sırası gelenleri paylaş
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+        run: python3 yayin/publish.py
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          git config user.name "yayin-sirasi"
+          git config user.email "actions@users.noreply.github.com"
+          git add yayin/queue.json
+          git diff --cached --quiet || (git commit -m "yayın sırası: durum" && git pull --rebase && git push)
