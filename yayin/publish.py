@@ -23,6 +23,7 @@ API = "https://backend.composio.dev/api/v3.1"
 HERE = os.path.dirname(os.path.abspath(__file__))
 QUEUE = os.path.join(HERE, "queue.json")
 MAX_LATE_H = 3
+GRACE_MIN = int(os.environ.get("GRACE_MIN", "0"))  # Mac backup waits so GitHub gets the first try
 TZ = dt.timezone(dt.timedelta(hours=3))  # Europe/Istanbul (no DST)
 
 
@@ -104,7 +105,7 @@ def main():
         if item["status"] not in ("pending", "posting"):
             continue
         at = dt.datetime.fromisoformat(item["at"]).replace(tzinfo=TZ)
-        if at > now:
+        if at > now or (now - at).total_seconds() < GRACE_MIN * 60:
             continue
         if item["status"] == "pending" and (now - at).total_seconds() > MAX_LATE_H * 3600:
             item["status"] = "late"
